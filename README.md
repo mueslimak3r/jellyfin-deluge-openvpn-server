@@ -67,7 +67,7 @@ Now you'll need to set up hardware acceleration for video encoding/decoding. Som
 
 https://jellyfin.org/docs/general/administration/hardware-acceleration.html
 
-**Be wary. Yo
+
 
 
 
@@ -91,7 +91,8 @@ A       p2p       (public ip of raspberry pi)   Auto    Proxied
 
 # Step 5, install caddy
 
-If you are using this on a home network you should be good to go. However, if you want to hook this up to a domain you'll need some protection from the scary internet.
+If you are using this on a home network you should be good to go. Otherwise, use Caddy.
+
 
 Install Caddy:
 ```
