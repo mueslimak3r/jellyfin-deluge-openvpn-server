@@ -7,7 +7,7 @@ This tutorial will guide you through the setup of openvpn, deluge, jellyfin, and
 
 prerequisites: screen, emacs/vim/nano
 
-**I highly recommend you have a heatsink for you Pi, and overclock it**
+**I highly recommend you have a heatsink for your Pi and overclock it**
 
 # Step 0, set up a static local IP for your raspberry pi
 
