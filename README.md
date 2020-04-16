@@ -11,7 +11,7 @@ prerequisites: screen, emacs/vim/nano, dropbear
 
 # Step 0, set up a static local IP for your raspberry pi
 
-go to your router's admin page and configure the DHCP settings to that you reserve an IP address for you raspberry pi. The easier way to do this is to check the current ip your Pi has and use that.
+go to your router's admin page and configure the DHCP settings to reserve an IP address for your raspberry pi. It's easiest to check the current ip your Pi has and use that.
 
 
 
