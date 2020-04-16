@@ -7,7 +7,7 @@ This tutorial will guide you through the setup of openvpn, deluge, jellyfin, and
 
 prerequisites: screen, emacs/vim/nano, dropbear
 
-
+I highly recommend you have a heatsink for you Pi, and overclock it
 
 # Step 0, set up a static local IP for your raspberry pi
 
@@ -57,7 +57,15 @@ after this we need to make sure that jellyfin and access the files created by de
 
 usermod -a -G vpn jellyfin
 
+restart the jellyfin service and set up your library. Now you'll need to make sure jellyfin's network settings are set up correctly for securily making it available over the internet.
 
+Log into Jellyfin and go to "Dashboard" and find the "Networking" page. Disable "Allow remote connections to this Jellyfin Server". Caddy will be managing remote connection so as far as Jellyfin is concerned everything is local. Disabling this setting will still allow you to connect via your local network.
+
+Now you'll need to set up hardware acceleration for video encoding/decoding. Some of these features aren't supported by raspberry pi models below 4. Follow this tutorial:
+
+https://jellyfin.org/docs/general/administration/hardware-acceleration.html
+
+Be wary. You will need a heatsink for you Pi for this to work.
 
 # Step 4, open ports and set up DNS
 
