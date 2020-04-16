@@ -5,7 +5,7 @@ When I set this up I was using a Raspberry Pi 4B (4GB) running the "dietpi" dist
 
 This tutorial will guide you through the setup of openvpn, deluge, jellyfin, and caddy
 
-prerequisites: screen, emacs/vim/nano, dropbear
+prerequisites: screen, emacs/vim/nano
 
 **I highly recommend you have a heatsink for you Pi, and overclock it**
 
