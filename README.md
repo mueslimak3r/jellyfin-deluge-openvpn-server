@@ -15,7 +15,7 @@ go to your router's admin page and configure the DHCP settings to that you reser
 
 
 
-# Step 1, set up openvp split tunnel
+# Step 1, set up openvpn split tunnel
 
 Follow the tutorial below to set up a split tunnel for openvpn. This works by creating a new user called "vpn" and routing all its services through openvpn. This is the easiest method I could find to run only deluge through a vpn while the other services (deluge web-ui, jellyfin, caddy, etc) are networked normally
 
