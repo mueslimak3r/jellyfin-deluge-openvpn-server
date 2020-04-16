@@ -31,7 +31,7 @@ User=dietpi
 
 Group=dietpi
 ```
-You can replace "dietpi" with whatever user, other than "vpn" (so it isn't tunneled). The user you choose should be non-root.
+
 
 The reason for this change is to run the service through your primary user instead of through the tunneled user.
 
@@ -67,7 +67,7 @@ Now you'll need to set up hardware acceleration for video encoding/decoding. Som
 
 https://jellyfin.org/docs/general/administration/hardware-acceleration.html
 
-**Be wary. You will need a heatsink for you Pi for this to work.**
+**Be wary. Yo
 
 
 
