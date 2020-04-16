@@ -67,7 +67,13 @@ https://www.random.org/integers/?num=1&min=5001&max=49151&col=5&base=10&format=h
 
 Now configure your raspberry pi to use that port for SSH. I use dropbear so I set that in "/etc/default/dropbear", but for openssh set it in "/etc/ssh/sshd_config". Once you make sure that you can ssh using that port, forward that port through your router settings (TCP).
 
-I used cloudflare's dns to set this up. 
+I used cloudflare's dns to set this up. In cloudflare, in the SSL/TLS tab I set it to "full (strict)". In the DNS tab I add two new 'A' records. "Name" is set to the name of the subdomain. This needs to match what you set in the Caddyfile when you install Caddy. In this case I have two subdomains. One for jellyfin and one for the deluge web-ui.
+
+Type    Name      Content	                      TTL     Proxy
+A       jellyfin  (public ip of raspberry pi)   Auto    Proxied
+A       p2p       (public ip of raspberry pi)   Auto    Proxied
+
+
 
 # Step 5, install caddy
 
@@ -83,7 +89,7 @@ sudo mkdir /etc/caddy
 
 sudo touch /etc/caddy/My-Caddyfile
 
-included in the repo is a copy of the caddyfile I used, with my personal info removed. Populate your caddy file
+included in the repo is a copy of the caddyfile I used, with my personal info removed. Populate your caddy file. Make sure that for each subdomain the names match those set in your DNS (cloudflare)
 
 now create a new session in screen. I'll call mine "caddy-server"
 
