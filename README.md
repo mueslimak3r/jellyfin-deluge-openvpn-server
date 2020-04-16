@@ -1,11 +1,26 @@
 # jellyfin-deluge-openvpn-server
 Guide for setting up a media streaming server using deluge and openvpn for media downloading, jellyfin for streaming, and caddy for the proxy
 
+When I set this up I was using a Raspberry Pi 4B (4GB) running the "dietpi" distro. This tutorial will probably work on many debian based systems. The primary non-root user is called "dietpi" in this tutorial.
+
+This tutorial will guide you through the setup of openvpn, deluge, jellyfin, and caddy
+
+prerequisites: screen, emacs/vim/nano, dropbear
+
+
+
+# Step 0, set up a static local IP for your raspberry pi
+
+go to your router's admin page and configure the DHCP settings to that you reserve an IP address for you raspberry pi. The easier way to do this is to check the current ip your Pi has and use that.
+
+
+
 # Step 1, set up openvp split tunnel
 
 Follow the tutorial below to set up a split tunnel for openvpn. This works by creating a new user called "vpn" and routing all its services through openvpn. This is the easier method I could find to run only deluge through a vpn while the other services (deluge web-ui, jellyfin, caddy, etc) run and are networked normally
 
 https://www.htpcguides.com/force-torrent-traffic-vpn-split-tunnel-debian-8-ubuntu-16-04/
+
 
 
 # Step 2, install deluge and make it run through vpn
@@ -30,6 +45,52 @@ after that copy the "vpn" user's auth file "/home/vpn/.config/deluge/auth" to "/
 
 Once that is done restart both deluge services and make sure the web-ui works and can connect to the daemon. If that works go to the below site and follow the instructions to make sure deluge is properly tunneled and your IP is changed (compare the ip reported by the site to the ip you get when you google "what's my IP").
 
+
+
 # Step 3, install jellyfin
 
+follow the relevant steps in this tutorial. I skipped some because I'm using dietpi instead of raspbian (eg: running rpi-update won't work on dietpi).
 
+https://www.electromaker.io/tutorial/blog/how-to-install-jellyfin-on-the-raspberry-pi
+
+after this we need to make sure that jellyfin and access the files created by deluge. Since deluge only gives read permissions to users in its group we'll need to add jellyfin's user "jellyfin" to the same group as the deluge daemon "vpn". To do this run:
+
+usermod -a -G vpn jellyfin
+
+
+
+# Step 4, open ports and set up DNS
+
+In the next step you will set up caddy to proxy your services and serve them over the web through https (port 443). It also needs the http port open (80). Go to your router's admin panel and forward ports 443 and 80 (TCP/UDP) to your raspberry pi's local IP. If you plan to remotely SSH into your pi make sure you disable root ssh login, change ssh login from password to RSA key, and change the port SSH uses from 22 to something less predictable. You can generate one here:
+
+https://www.random.org/integers/?num=1&min=5001&max=49151&col=5&base=10&format=html&rnd=new
+
+Now configure your raspberry pi to use that port for SSH. I use dropbear so I set that in "/etc/default/dropbear", but for openssh set it in "/etc/ssh/sshd_config". Once you make sure that you can ssh using that port, forward that port through your router settings (TCP).
+
+I used cloudflare's dns to set this up. 
+
+# Step 5, install caddy
+
+If you are using this on a home network you should be good to go. However, if you want to hook this up to a domain you'll need some protection from the scary internet.
+
+Install Caddy:
+
+sudo apt-get remove apache2
+
+curl https://getcaddy.com | bash -s personal
+
+sudo mkdir /etc/caddy
+
+sudo touch /etc/caddy/My-Caddyfile
+
+included in the repo is a copy of the caddyfile I used, with my personal info removed. Populate your caddy file
+
+now create a new session in screen. I'll call mine "caddy-server"
+
+screen -S caddy-server
+
+sudo /etc/caddy -conf /etc/caddy/My-Caddyfile
+
+Make sure caddy is running properly and getting an SSL cert. Try connecting to your domain and make sure everything works.
+
+Then finally you can detach the screen session with (ctrl + a, then press 'd'), and you can exit your terminal.
