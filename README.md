@@ -70,7 +70,9 @@ Now configure your raspberry pi to use that port for SSH. I use dropbear so I se
 I used cloudflare's dns to set this up. In cloudflare, in the SSL/TLS tab I set it to "full (strict)". In the DNS tab I add two new 'A' records. "Name" is set to the name of the subdomain. This needs to match what you set in the Caddyfile when you install Caddy. In this case I have two subdomains. One for jellyfin and one for the deluge web-ui.
 
 Type    Name      Content	                      TTL     Proxy
+
 A       jellyfin  (public ip of raspberry pi)   Auto    Proxied
+
 A       p2p       (public ip of raspberry pi)   Auto    Proxied
 
 
