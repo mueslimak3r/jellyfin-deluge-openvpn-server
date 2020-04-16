@@ -69,7 +69,7 @@ https://jellyfin.org/docs/general/administration/hardware-acceleration.html
 
 
 
-
+**you can stop here if you are only using this on your lan**
 
 # Step 4, open ports and set up DNS
 
@@ -91,7 +91,7 @@ A       p2p       (public ip of raspberry pi)   Auto    Proxied
 
 # Step 5, install caddy
 
-If you are using this on a home network you should be good to go. Otherwise, use Caddy.
+
 
 
 Install Caddy:
