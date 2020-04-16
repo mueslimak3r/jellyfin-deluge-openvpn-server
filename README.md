@@ -55,7 +55,7 @@ follow the relevant steps in this tutorial. I skipped some because I'm using die
 
 https://www.electromaker.io/tutorial/blog/how-to-install-jellyfin-on-the-raspberry-pi
 
-after this we need to make sure that jellyfin and access the files created by deluge. Since deluge only gives read permissions to users in its group we'll need to add jellyfin's user "jellyfin" to the same group as the deluge daemon "vpn". To do this run:
+after this we need to make sure that jellyfin can access the files downloaded by deluge. Since deluge only gives read permissions to users in its group we'll need to add jellyfin's user "jellyfin" to the same group as the deluge daemon "vpn". To do this run:
 
 usermod -a -G vpn jellyfin
 
