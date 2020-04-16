@@ -69,7 +69,7 @@ https://jellyfin.org/docs/general/administration/hardware-acceleration.html
 
 
 
-**you can stop here if you are only using this on your lan**
+# you can stop here if you are only using this on your lan
 
 # Step 4, open ports and set up DNS
 
