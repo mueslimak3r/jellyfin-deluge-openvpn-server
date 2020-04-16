@@ -7,7 +7,7 @@ This tutorial will guide you through the setup of openvpn, deluge, jellyfin, and
 
 prerequisites: screen, emacs/vim/nano, dropbear
 
-I highly recommend you have a heatsink for you Pi, and overclock it
+**I highly recommend you have a heatsink for you Pi, and overclock it**
 
 # Step 0, set up a static local IP for your raspberry pi
 
@@ -37,7 +37,7 @@ The reason for this change is to run the service through your primary user inste
 
 Since we will use caddy for serving this service and several others, don't do the section of the tutorial for setting up nginx. Stop after the prior section.
 
-Follow the tutorial below, and at the end you should be able to connect to the web-ui but the daemon should show as offline. This is because deluge stores auth files per user, and since we have diverged from the tutorial and are running the web-ui as a different user, we need to make sure that our web-ui's user has a copy of the "vpn" user's auth file.
+Follow the tutorial below, and at the end you should be able to connect to the web-ui but the daemon should show as offline. This is because **deluge stores auth files per user**, and since we have diverged from the tutorial and are running the web-ui as a different user, we need to make sure that our web-ui's user has a copy of the "vpn" user's auth file.
 
 https://www.htpcguides.com/configure-deluge-for-vpn-split-tunneling-debian-8/
 
@@ -67,11 +67,13 @@ Now you'll need to set up hardware acceleration for video encoding/decoding. Som
 
 https://jellyfin.org/docs/general/administration/hardware-acceleration.html
 
-Be wary. You will need a heatsink for you Pi for this to work.
+**Be wary. You will need a heatsink for you Pi for this to work.**
+
+
 
 # Step 4, open ports and set up DNS
 
-In the next step you will set up caddy to proxy your services and serve them over the web through https (port 443). It also needs the http port open (80). Go to your router's admin panel and forward ports 443 and 80 (TCP/UDP) to your raspberry pi's local IP. If you plan to remotely SSH into your pi make sure you disable root ssh login, change ssh login from password to RSA key, and change the port SSH uses from 22 to something less predictable. You can generate one here:
+In the next step you will set up caddy to proxy your services and serve them over the web through https (port 443). It also needs the http port open (80). Go to your router's admin panel and forward ports 443 and 80 (TCP/UDP) to your raspberry pi's local IP. **If you plan to remotely SSH into your pi make sure you disable root ssh login, change ssh login from password to RSA key, and change the port SSH uses from 22 to something less predictable.** You can generate one here:
 
 https://www.random.org/integers/?num=1&min=5001&max=49151&col=5&base=10&format=html&rnd=new
 
