@@ -59,7 +59,7 @@ after this we need to make sure that jellyfin can access the files downloaded by
 ```
 usermod -a -G vpn jellyfin
 ```
-restart the jellyfin service and set up your library. Now you'll need to make sure jellyfin's network settings are set up correctly for securily making it available over the internet.
+restart the jellyfin service and set up your library. Now you'll need to make sure jellyfin's network settings are set up correctly for securely making it available over the internet.
 
 Log into Jellyfin and go to "Dashboard" and find the "Networking" page. Disable "Allow remote connections to this Jellyfin Server". Caddy will be managing remote connection so as far as Jellyfin is concerned everything is local. Disabling this setting will still allow you to connect via your local network.
 
