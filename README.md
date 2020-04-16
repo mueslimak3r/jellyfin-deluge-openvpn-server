@@ -107,7 +107,7 @@ now create a new session in screen. I'll call mine "caddy-server"
 
 screen -S caddy-server
 
-sudo /etc/caddy -conf /etc/caddy/My-Caddyfile
+sudo /etc/caddy -conf /etc/caddy/My-CaddyFile
 
 Make sure caddy is running properly and getting an SSL cert. Try connecting to your domain and make sure everything works.
 
