@@ -33,7 +33,7 @@ Group=dietpi
 
 You can replace "dietpi" with whatever user, other than "vpn" (so it isn't tunneled). The user you choose should be non-root.
 
-The reason for this change is to run the service throught your primary user instead of through the tunneled user.
+The reason for this change is to run the service through your primary user instead of through the tunneled user.
 
 Since we will use caddy for serving this service and several others, don't do the section of the tutorial for setting up nginx. Stop after the prior section.
 
