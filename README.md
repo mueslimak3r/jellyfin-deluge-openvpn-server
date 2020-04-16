@@ -25,7 +25,7 @@ https://www.htpcguides.com/force-torrent-traffic-vpn-split-tunnel-debian-8-ubunt
 
 # Step 2, install deluge and make it run through vpn
 
-while follow the below tutorial, when creating "/etc/systemd/system/deluge-web.service" set
+while following the below tutorial, when creating "/etc/systemd/system/deluge-web.service", set the user and group variables to "dietpi" instead of "vpn".
 ```
 User=dietpi
 
@@ -41,7 +41,7 @@ Follow the tutorial below, and at the end you should be able to connect to the w
 
 https://www.htpcguides.com/configure-deluge-for-vpn-split-tunneling-debian-8/
 
-after that copy the "vpn" user's auth file "/home/vpn/.config/deluge/auth" to "/home/dietpi/.config/deluge", replacing the existing one.
+after completing that tutorial, copy the "vpn" user's auth file "/home/vpn/.config/deluge/auth" to "/home/dietpi/.config/deluge", replacing the existing one.
 
 Once that is done restart both deluge services and make sure the web-ui works and can connect to the daemon. If that works go to the below site and follow the instructions to make sure deluge is properly tunneled and your IP is changed (compare the ip reported by the site to the ip you get when you google "what's my IP").
 
