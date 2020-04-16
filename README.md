@@ -45,6 +45,8 @@ after that copy the "vpn" user's auth file "/home/vpn/.config/deluge/auth" to "/
 
 Once that is done restart both deluge services and make sure the web-ui works and can connect to the daemon. If that works go to the below site and follow the instructions to make sure deluge is properly tunneled and your IP is changed (compare the ip reported by the site to the ip you get when you google "what's my IP").
 
+https://torguard.net/checkmytorrentipaddress.php
+
 
 
 # Step 3, install jellyfin
