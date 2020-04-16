@@ -99,7 +99,7 @@ curl https://getcaddy.com | bash -s personal
 
 sudo mkdir /etc/caddy
 
-sudo touch /etc/caddy/My-Caddyfile
+sudo touch /etc/caddy/My-CaddyFile
 
 included in the repo is a copy of the caddyfile I used, with my personal info removed. Populate your caddy file. Make sure that for each subdomain the names match those set in your DNS (cloudflare)
 
