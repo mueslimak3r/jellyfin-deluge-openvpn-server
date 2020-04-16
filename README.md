@@ -26,11 +26,11 @@ https://www.htpcguides.com/force-torrent-traffic-vpn-split-tunnel-debian-8-ubunt
 # Step 2, install deluge and make it run through vpn
 
 while follow the below tutorial, when creating "/etc/systemd/system/deluge-web.service" set
-
+```
 User=dietpi
 
 Group=dietpi
-
+```
 You can replace "dietpi" with whatever user, other than "vpn" (so it isn't tunneled). The user you choose should be non-root.
 
 The reason for this change is to run the service through your primary user instead of through the tunneled user.
@@ -56,9 +56,9 @@ follow the relevant steps in this tutorial. I skipped some because I'm using die
 https://www.electromaker.io/tutorial/blog/how-to-install-jellyfin-on-the-raspberry-pi
 
 after this we need to make sure that jellyfin can access the files downloaded by deluge. Since deluge only gives read permissions to users in its group we'll need to add jellyfin's user "jellyfin" to the same group as the deluge daemon "vpn". To do this run:
-
+```
 usermod -a -G vpn jellyfin
-
+```
 restart the jellyfin service and set up your library. Now you'll need to make sure jellyfin's network settings are set up correctly for securily making it available over the internet.
 
 Log into Jellyfin and go to "Dashboard" and find the "Networking" page. Disable "Allow remote connections to this Jellyfin Server". Caddy will be managing remote connection so as far as Jellyfin is concerned everything is local. Disabling this setting will still allow you to connect via your local network.
@@ -78,13 +78,13 @@ https://www.random.org/integers/?num=1&min=5001&max=49151&col=5&base=10&format=h
 Now configure your raspberry pi to use that port for SSH. I use dropbear so I set that in "/etc/default/dropbear", but for openssh set it in "/etc/ssh/sshd_config". Once you make sure that you can ssh using that port, forward that port through your router settings (TCP).
 
 I used cloudflare's dns to set this up. In cloudflare, in the SSL/TLS tab I set it to "full (strict)". In the DNS tab I add two new 'A' records. "Name" is set to the name of the subdomain. This needs to match what you set in the Caddyfile when you install Caddy. In this case I have two subdomains. One for jellyfin and one for the deluge web-ui.
-
+```
 Type    Name      Content	                      TTL     Proxy
 
 A       jellyfin  (public ip of raspberry pi)   Auto    Proxied
 
 A       p2p       (public ip of raspberry pi)   Auto    Proxied
-
+```
 
 
 # Step 5, install caddy
@@ -92,23 +92,27 @@ A       p2p       (public ip of raspberry pi)   Auto    Proxied
 If you are using this on a home network you should be good to go. However, if you want to hook this up to a domain you'll need some protection from the scary internet.
 
 Install Caddy:
-
+```
 sudo apt-get remove apache2
-
+```
+```
 curl https://getcaddy.com | bash -s personal
-
+```
+```
 sudo mkdir /etc/caddy
-
+```
+```
 sudo touch /etc/caddy/My-CaddyFile
-
+```
 included in the repo is a copy of the caddyfile I used, with my personal info removed. Populate your caddy file. Make sure that for each subdomain the names match those set in your DNS (cloudflare)
 
 now create a new session in screen. I'll call mine "caddy-server"
-
+```
 screen -S caddy-server
-
+```
+```
 sudo /etc/caddy -conf /etc/caddy/My-CaddyFile
-
+```
 Make sure caddy is running properly and getting an SSL cert. Try connecting to your domain and make sure everything works.
 
 Then finally you can detach the screen session with (ctrl + a, then press 'd'), and you can exit your terminal.
