@@ -17,7 +17,7 @@ go to your router's admin page and configure the DHCP settings to that you reser
 
 # Step 1, set up openvp split tunnel
 
-Follow the tutorial below to set up a split tunnel for openvpn. This works by creating a new user called "vpn" and routing all its services through openvpn. This is the easier method I could find to run only deluge through a vpn while the other services (deluge web-ui, jellyfin, caddy, etc) run and are networked normally
+Follow the tutorial below to set up a split tunnel for openvpn. This works by creating a new user called "vpn" and routing all its services through openvpn. This is the easiest method I could find to run only deluge through a vpn while the other services (deluge web-ui, jellyfin, caddy, etc) are networked normally
 
 https://www.htpcguides.com/force-torrent-traffic-vpn-split-tunnel-debian-8-ubuntu-16-04/
 
@@ -33,7 +33,7 @@ Group=dietpi
 
 You can replace "dietpi" with whatever user, other than "vpn" (so it isn't tunneled). The user you choose should be non-root.
 
-The reason for this change is to run the service throught your primary user, not through the tunneled user.
+The reason for this change is to run the service throught your primary user instead of through the tunneled user.
 
 Since we will use caddy for serving this service and several others, don't do the section of the tutorial for setting up nginx. Stop after the prior section.
 
