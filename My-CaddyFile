@@ -2,9 +2,6 @@
 
 jellyfin.domain.com {
 
-  #change email to yours. This is sent to letsencrypt to get and auto renew your ssl certs
-	tls email@email.com
-
 # change this if you want
 #	timeouts none
 
@@ -30,10 +27,11 @@ jellyfin.domain.com {
 #do same as above
 p2p.domain.com {
 
-	tls email@email.com
-
   proxy / http://127.0.0.1:8112 {
     transparent
     without /deluge header_upstream X-Deluge-Base "/deluge"
   }
+  
+  # Optional logging
+	log /etc/caddy/DelugeProxy.log
 }
