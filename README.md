@@ -83,9 +83,9 @@ I used cloudflare's dns to set this up. In cloudflare, in the SSL/TLS tab I set 
 ```
 Type    Name      Content	                      TTL     Proxy
 
-A       jellyfin  (public ip of raspberry pi)   Auto    Proxied
+A       jellyfin  (public ip of raspberry pi)   Auto    DNS Only
 
-A       p2p       (public ip of raspberry pi)   Auto    Proxied
+A       p2p       (public ip of raspberry pi)   Auto    DNS Only
 ```
 
 
